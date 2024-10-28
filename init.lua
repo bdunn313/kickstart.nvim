@@ -355,6 +355,11 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'stevearc/overseer.nvim',
+    opts = {},
+  },
+
   -- LSP Plugins
   {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
@@ -619,8 +624,31 @@ require('lazy').setup({
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        typescript = { 'prettierd', 'prettier', stop_after_first = true },
+        typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        json = { 'prettierd', 'prettier', stop_after_first = true },
+        css = { 'prettierd', 'prettier', stop_after_first = true },
       },
+    },
+  },
+
+  { -- Copilot
+    'zbirenbaum/copilot-cmp',
+    event = 'InsertEnter',
+    config = function()
+      require('copilot_cmp').setup()
+    end,
+    dependencies = {
+      'zbirenbaum/copilot.lua',
+      cmd = 'Copilot',
+      config = function()
+        require('copilot').setup {
+          suggestion = { enabled = false },
+          panel = { enabled = false },
+        }
+      end,
     },
   },
 
@@ -732,6 +760,7 @@ require('lazy').setup({
             -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
             group_index = 0,
           },
+          { name = 'copilot' },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
