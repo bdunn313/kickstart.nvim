@@ -5,4 +5,5 @@
 return {
   require 'custom.plugins.copilot',
   require 'custom.plugins.codecompanion',
+  require 'custom.plugins.leetcode',
 }
