@@ -5,8 +5,15 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local lint = require 'lint'
+      vim.filetype.add {
+        pattern = {
+          ['.*/.github/workflows/.*%.yml'] = 'yaml.ghaction',
+          ['.*/.github/workflows/.*%.yaml'] = 'yaml.ghaction',
+        },
+      }
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
+        ghaction = { 'actionlint' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
