@@ -88,6 +88,16 @@ vim.opt.scrolloff = 10
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
 
+-- go templates
+vim.filetype.add {
+  extension = {
+    gotmpl = 'gotmpl',
+  },
+  pattern = {
+    ['.*%.gohtml'] = 'gotmpl',
+  },
+}
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -553,6 +563,14 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
         ts_ls = {},
+        -- eslint = {
+        --   on_attach = function(_, bufnr)
+        --     vim.api.nvim_create_autocmd('BufWritePre', {
+        --       buffer = bufnr,
+        --       command = 'EslintFixAll',
+        --     })
+        --   end,
+        -- },
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},

@@ -8,9 +8,12 @@ return {
   },
   opts = {
     -- configuration goes here
-    lang = 'python3',
+    lang = 'golang',
     injector = {
       ['python3'] = {
+        before = true,
+      },
+      ['golang'] = {
         before = true,
       },
     },
