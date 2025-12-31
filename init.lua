@@ -371,6 +371,18 @@ require('lazy').setup({
         }
       end, { desc = '[S]earch [/] in Open Files' })
 
+      -- Search but exclude test files 
+      vim.keymap.set('n', '<leader>sx', function()
+        builtin.live_grep {
+          glob_pattern = {
+            '!*.test.*',
+            '!*.spec.*',
+            '!*_test.go'
+          },
+          prompt_title = 'Live Grep Ignoring Test files',
+        }
+      end, { desc = '[S]earch [/] in Open Files' })
+
       -- Shortcut for searching your Neovim configuration files
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
@@ -585,6 +597,7 @@ require('lazy').setup({
             },
           },
         },
+        terraformls = {},
       }
 
       -- Ensure the servers and tools above are installed

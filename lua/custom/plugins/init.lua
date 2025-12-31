@@ -2,8 +2,4 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
-return {
-  require 'custom.plugins.copilot',
-  require 'custom.plugins.codecompanion',
-  require 'custom.plugins.leetcode',
-}
+return {}
